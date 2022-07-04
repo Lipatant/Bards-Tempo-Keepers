@@ -1,88 +1,53 @@
 ## EXPLATION ON FILE DATA
 
-# colors
-contains all colors used in "Bards: Tempo Keepers"
+# colors/*.bclr
+Contains all colors used by palettes in <b>hex</b>.<br/>
+<br/>
+Example from beige.bclr:
+>F0BC3C
 
-# events
-contains informations on :
-    - closet
-        data used to link outfits informations
-    - houses/small_1
-        data used to link buildings informations
-    - menus
-        data used to link all games informations to menus
-    - tp
-        data used to teleport players in game
-    player data :
-        - player cursor informations
-        - player character informations
+# enemies/*.benm
+Contains files used to code enemies.<br/>
+The first line contains the name of the audio file,<br/>
+The second one gives the health and attack.<br/>
+<br/>
+Example from morde.benm:
+>Boss01<br/>
+>2000   400
 
-# hitboxes
-contains all of the entities' hitboxes
+# events/*.evt
+Contains 'objects' on the map<br/>
+The first line gives the texture file as well as the texture coordinates,<br/>
+The second line specify the color palette and layering informations.<br/>
+Then, you'll have different instructions attached to the event:
+- Always starting with a trigger: <b>>on_load</b>, <b>>on_tick</b>, <b>>player_contact</b>, <b>>player_interaction</b> or <b>>player_tile</b>
+- <b>COMMAND</b> if you want to specify the use of a single command instead of an entire script.
+- Then finishing script. If you do use a command instead, use <b>`</b> (Ctrl+7) instead of spaces.
 
-# items
-contains data used to link items informations (name, png, stats)
-    - outfits
+Example from player_cursor.bvnt:
+>misc/overlay.png 1 0<br/>
+>none 1 0<br/>
+>\>on_load COMMAND set_palette_player`@0<br/>
+>\>on_tick player/cursor_tp
 
-# maps
-contains all of the data to make the game map (mainly positions)
+# hitboxes/*.bhbx
+Describes the shape of a tile hitbox of a tile with <b>0</b> (pass), <b>@</b> (block) or <b>.</b> (none).<br/>
+Contains 8 lines of 8 characters.<br/>
+<br/>
+Example from fence_right_up.bhbx:
+>........<br/>
+>........<br/>
+>........<br/>
+>........<br/>
+>........<br/>
+>@@@@@@@@<br/>
+>@@@@@@@@<br/>
+>........<br/>
 
-# menus
-I don't know how to discribe that, sorry Lipatant²
-
-# misc
-- titles
-    contains all musics name
-
-# palettes
-contains colors used for each entity (imported from "## colors")
-    - doors
-    - misc
-        - menus
-        - players
-    - outfits
-    - status
-    - map
-
-# scripts
-send to the game which script use for each entity
-    - players
-    - map
-    - players connection/disconnection
-
-
-
-## ALL SCRIPT COMMAND
-
-# menu
-game
-    - equipment
-        "graphics/_"/".png"
-    - fullscreen
-        change fullscreen parameter (full or window)
-    - quit
-        quit the game
-    - settings
-        euh... trop compliqué
-    - skin tone 1   change
-    - skin tone 2   each
-    - skin tone 3   player
-    - skin tone 4   skin
-title
-    - new confirm
-    - new game
-    - quit
-    - settings
-- player status empty
-- player status
-
-# player
-    - cursor tp
-    - tp
-
-# system
-    - initialization
-    - load map
-    - open menu
-
-- add players
+# items/*.btw
+Example from morde_golden_helmet.bitm
+>Morde's Golden Helmet<br/>
+>outfit<br/>
+>chars/helmet.png outfits/morde_iii no_skin<br/>
+>none<br/>
+>100 40 (+50%)
