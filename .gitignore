@@ -1,0 +1,11 @@
+*.a
+*.o
+*.gcda
+*.gcno
+vgcore.*
+*#*
+*~
+my_rpg
+bgm_sources
+build
+saved/save
